@@ -1,6 +1,8 @@
 ## Seja bem vindo ao Camera Track - Globo Esporte
 
-Hello. Want to get started with Flask quickly? Good. You came to the right place. This Flask application framework is pre-configured with **Flask-SQLAlchemy**, **Flask-WTF**, **Fabric**, **Coverage**, and the **Bootstrap** frontend (among others). This will get your Flask app up and running on Heroku or PythonAnywhere quickly. Use this starter, boilerplate for all you new Flask projects. Cheers!
+Ocular é composto por um sistema embarcado conectado a uma câmera e um aplicativo. 
+
+Ocular proporciona uma experiência única para torcedores de times de futebol com base na visualização de dois jogadores escolhidos por eles, antes da partida, em um aplicativo que além de transmitir o jogo, transmite ao vivo o vídeo dos jogadores escolhidos a partir de câmeras especificas. E mais, é possível ver o seu jogador preferido através de uma câmera que o segue a todo o momento durante a partida. O aplicativo ainda traz vários indicadores do jogador, como: número de cartões amarelos e vermelhos, número de faltas recebidas e cometidas, número de gols, chutes a gol e bolas interceptadas, velocidade média do jogador, distância percorrida, gráfico de pontos percorridos no campo, entre outros.
 
 <hr>
 
