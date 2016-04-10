@@ -43,7 +43,7 @@ try:
 			#cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
 			#cv2.line(img, (cx, cy), (cx, cy), [0, 255, 255], 15)
 			
-			print myServo.read()
+		#	print myServo.read()
 			roi_gray = gray[y:y+h, x:x+w]
 			roi_color = img[y:y+h, x:x+w]
 			if (cx, cy) < (int(width/2) - int(width/4), 0):
