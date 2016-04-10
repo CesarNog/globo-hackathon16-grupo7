@@ -14,7 +14,7 @@ myServo = Servo("First Servo")
 
 # Attaches the servo to pin 3 in Arduino Expansion board
 myServo.attach(3)
-angle = 90
+angle = myServo.read()
 
 
 def left(angle):
