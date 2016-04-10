@@ -14,6 +14,7 @@ from camera import VideoCamera
 from forms import *
 import urllib2
 import json
+import threading
 
 # ----------------------------------------------------------------------------#
 # App Config.
@@ -51,23 +52,16 @@ def login_required(test):
 
 @app.route('/')
 def home():
-    obj = [[1, 2, 3], 123, 123.123, 'abc', {'key1': (1, 2, 3), 'key2': (4, 5, 6)}]
-
-    try:
-        json_atleta = atleta_detalhes_json(38162)
-    except Exception:
-        pass
-
-    # Convert python object to json
-    json_string = json.dumps(obj)
-    print 'Json: %s' % json_string
-
-    # Convert json to python object
-    new_obj = json.loads(json_string)
-    print 'Python obj: ', new_obj
-
     # Render template
-    return render_template('pages/placeholder.home.html', info_atleta=json_string, info_atleta2=obj)
+    atleta_id = 38162;
+    return render_template('pages/placeholder.home.html',
+                           foto_atleta=get_atleta_foto(atleta_id),
+                           nome_atleta=get_atleta_nome_upper(atleta_id),
+                           n_cartao_amarelo=get_num_cartao_amarelo(atleta_id),
+                           n_cartao_vermelho=get_num_cartao_vermelho(atleta_id),
+                           n_chutes_ao_gol=get_num_chutes_ao_gol(atleta_id),
+                           n_faltas_cometidas=get_num_chutes_ao_gol(atleta_id),
+                           n_faltas_recebidas=get_num_chutes_ao_gol(atleta_id))
 
 
 def gen(camera):
@@ -82,45 +76,67 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
-@app.route('/about')
-def about():
-    return render_template('pages/placeholder.about.html')
-
-
-@app.route('/login')
-def login():
-    form = LoginForm(request.form)
-    return render_template('forms/login.html', form=form)
-
-
-@app.route('/register')
-def register():
-    form = RegisterForm(request.form)
-    return render_template('forms/register.html', form=form)
-
-
-@app.route('/forgot')
-def forgot():
-    form = ForgotForm(request.form)
-    return render_template('forms/forgot.html', form=form)
-
-
 @app.route('/esportes', methods=['GET'])
 def esportes():
     return do_get_request("https://api.sde.globo.com/esportes")
 
 
-@app.route('/atleta/<int:atleta_id>/detalhes/', methods=['GET'])
+@app.route('/atleta/<int:atleta_id>/detalhes', methods=['GET'])
 def atleta_detalhes(atleta_id, filter=None):
     return do_get_request("https://api.sde.globo.com/esportes/futebol/modalidades/"
                           "futebol_de_campo/categorias/profissional/campeonatos/campeonato-brasileiro/"
                           "edicoes/brasileirao-2015/estatisticas/atletas?atleta_ids=%d" % atleta_id, 'referencias')
 
 
-def atleta_detalhes_json(atleta_id, filter=None):
+@app.route('/atleta/<int:atleta_id>/resultados', methods=['GET'])
+def atleta_resultados(atleta_id, filter=None):
     return do_get_request("https://api.sde.globo.com/esportes/futebol/modalidades/"
                           "futebol_de_campo/categorias/profissional/campeonatos/campeonato-brasileiro/"
-                          "edicoes/brasileirao-2015/estatisticas/atletas?atleta_ids=%d" % atleta_id, 'referencias')
+                          "edicoes/brasileirao-2015/estatisticas/atletas?atleta_ids=%d" % atleta_id, 'resultados')
+
+
+def get_atleta_foto(atleta_id):
+    return do_get_request("https://api.sde.globo.com/esportes/futebol/modalidades/"
+                          "futebol_de_campo/categorias/profissional/campeonatos/campeonato-brasileiro/"
+                          "edicoes/brasileirao-2015/estatisticas/atletas?atleta_ids=%d" % atleta_id, 'referencias').get(
+        'atletas').get(str(atleta_id)).get('fotos').get('300x300')
+
+
+def get_atleta_nome_upper(atleta_id):
+    return do_get_request("https://api.sde.globo.com/esportes/futebol/modalidades/"
+                          "futebol_de_campo/categorias/profissional/campeonatos/campeonato-brasileiro/"
+                          "edicoes/brasileirao-2015/estatisticas/atletas?atleta_ids=%d" % atleta_id, 'referencias').get(
+        'atletas').get(str(atleta_id)).get('nome').upper()
+
+
+def get_num_cartao_amarelo(atleta_id):
+    return do_get_request("https://api.sde.globo.com/esportes/futebol/modalidades/"
+                          "futebol_de_campo/categorias/profissional/campeonatos/campeonato-brasileiro/"
+                          "edicoes/brasileirao-2015/estatisticas/atletas?atleta_ids=%d" % atleta_id, 'resultados').get('estatisticas_atletas')[0].get('estatisticas').get('CA').get('total')
+
+
+def get_num_cartao_vermelho(atleta_id):
+    return do_get_request("https://api.sde.globo.com/esportes/futebol/modalidades/"
+                          "futebol_de_campo/categorias/profissional/campeonatos/campeonato-brasileiro/"
+                          "edicoes/brasileirao-2015/estatisticas/atletas?atleta_ids=%d" % atleta_id, 'resultados').get('estatisticas_atletas')[0].get('estatisticas').get('CV').get('total')
+
+def get_num_chutes_ao_gol(atleta_id):
+    return do_get_request("https://api.sde.globo.com/esportes/futebol/modalidades/"
+                          "futebol_de_campo/categorias/profissional/campeonatos/campeonato-brasileiro/"
+                          "edicoes/brasileirao-2015/estatisticas/atletas?atleta_ids=%d" % atleta_id, 'resultados').get('estatisticas_atletas')[0].get('estatisticas').get('ZG').get('total')
+
+
+def get_num_faltas_cometidas(atleta_id):
+    return do_get_request("https://api.sde.globo.com/esportes/futebol/modalidades/"
+                          "futebol_de_campo/categorias/profissional/campeonatos/campeonato-brasileiro/"
+                          "edicoes/brasileirao-2015/estatisticas/atletas?atleta_ids=%d" % atleta_id, 'resultados').get('estatisticas_atletas')[0].get('estatisticas').get('PD').get('total')
+
+
+def get_num_faltas_recebidas(atleta_id):
+    return do_get_request("https://api.sde.globo.com/esportes/futebol/modalidades/"
+                          "futebol_de_campo/categorias/profissional/campeonatos/campeonato-brasileiro/"
+                          "edicoes/brasileirao-2015/estatisticas/atletas?atleta_ids=%d" % atleta_id, 'resultados').get('estatisticas_atletas')[0].get('estatisticas').get('TF').get('total')
+
 
 
 def do_get_request(url, key=None):
@@ -132,9 +148,9 @@ def do_get_request(url, key=None):
         result = response.read()
         dict_result = json.loads(result)
         if key:
-            return jsonify(dict_result[key])
+            return dict_result[key]
         else:
-            return jsonify(dict_result)
+            return dict_result
     except urllib2.HTTPError, e:
         print str(e)
         abort(500)

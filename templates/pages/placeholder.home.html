@@ -1,15 +1,42 @@
 {% extends 'layouts/main.html' %}
-{% block title %}Ocular{% endblock %}
+{% block title %} Ocular App {% endblock %}
 {% block content %}
 
-<video autoplay  poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid" loop>
-<source src="//demosthenes.info/assets/videos/polina.webm" type="video/webm">
-<source src="//demosthenes.info/assets/videos/polina.mp4" type="video/mp4">
-</video>
-<div id="smallCameraPlayerScreen">
- <img id="video" src="{{ url_for('video_feed') }}"/>
-</div>
+    <img id="video" src="{{ url_for('video_feed') }}"/>
+    <div id="info">
+        <header>
+            <img class="athlete_picture" src="{{ foto_atleta }}"/><br>
+            {{ nome_atleta }}, 32 anos <br>
+            DESTRO <br>
+            CENTROAVANTE <br>
+        </header>
 
+        <ul class="athlete_category">
+            <li>
+                {{ n_cartao_amarelo }} <span>Cartões Amarelos</span>  <br>
+                {{ n_cartao_vermelho }} <span>Cartões Vermelhos</span> <br>
+            </li>
+
+            <li>
+                {{ n_faltas_recebidas }} <span>Faltas Recebidas</span><br>
+                {{ n_faltas_cometidas }} <span>Faltas Cometidas</span><br>
+            </li>
+
+            <li>
+                {{ n_chutes_ao_gol }} <span>Chutes ao Gol</span><br>
+                {{ n_cartao_vermelho }} <span>Bolas Interceptadas</span><br>
+            </li>
+
+            <li>
+               2.2 km/h <span>Velocidade Média</span><br>
+            </li>
+
+            <li>
+                32 bpm <span>Coração</span><br>
+            </li>
+
+        </ul>
+    </div>
 
 
 {% endblock %}

@@ -8,8 +8,14 @@
 /*****************************************************************************
  * Main elements
  ****************************************************************************/
+*{
+    padding: 0;
+    margin: 0;
+}
+
 html {
   overflow-y: scroll;
+
 }
 
 a {
@@ -39,32 +45,74 @@ a {
 
 /* Various other styles end */
 
-body {
-  margin: 0;
-  background: #000;
+@font-face {
+  font-family: Gotham-Rounded-Medium;
+  font-size: 8.4pt;
+  font-color: white;
+  src: url('../fonts/Gotham-Rounded-Medium_21022.ttf');
 }
 
-video {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -100;
-    transform: translateX(-50%) translateY(-50%);
-    background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
-    background-size: cover;
-    transition: 1s opacity;
+body {
+  margin: 0;
+  background: #fff;
+  font-family: Gotham-Rounded-Medium;
+  font-size: 2em;
+  color: #fff;
+  padding: 0;
+  height: 100%;
 }
+
+.athlete_category {
+    left: 0;
+    list-style: none;
+    display: block;
+}
+
+.athlete_category li{
+    background: rgba(45, 63, 114, .47);
+    margin: 10px;
+    padding: 30px;
+}
+.athlete_category li span{
+    color: yellow;
+}
+
+
+.athlete_info {
+   font-family: Gotham-Rounded-Medium;
+   align: center;
+   font-size: 1.3em;
+}
+
+#video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    transition: 1s opacity;
+    z-index: 1;
+}
+
+#info{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 100%;
+    background: rgba(4, 12 , 38, 0.88);
+    z-index: 10;
+    text-align: center;
+}
+
 
 #smallCameraPlayerScreen {
   background: rgba(0,0,0,0.3);
   color: white;
   padding: 2rem;
-    width: auto;
-    height: auto;
+  width: auto;
+  height: auto;
   margin:1rem;
   float: right;
 }
@@ -91,6 +139,6 @@ a {
 }
 
 @media screen and (max-device-width: 800px) {
-  html { background: url(//demosthenes.info/assets/images/polina.jpg) #000 no-repeat center center fixed; }
+  html { background: #000 no-repeat center center fixed; }
   #bgvid { display: none; }
 }
