@@ -10,10 +10,10 @@ face_cascade = cv2.CascadeClassifier('base.xml')
 width = webcam.get(3)
 
 # Create a new servo object with a reference name
-myServo = Servo("First Servo")
+#myServo = Servo("First Servo")
 
 # Attaches the servo to pin 3 in Arduino Expansion board
-myServo.attach(3)
+#myServo.attach(3)
 #angle = myServo.read()
 
 
