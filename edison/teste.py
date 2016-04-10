@@ -47,10 +47,10 @@ try:
 			roi_gray = gray[y:y+h, x:x+w]
 			roi_color = img[y:y+h, x:x+w]
 			if (cx, cy) < (int(width/2) - int(width/4), 0):
-        			angle = left(angle)
+        		#	angle = left(angle)
         			print "esquerda"
 			elif (cx, cy) > (int(width/2) + int(width/4), 0):
-        			angle = rigth(angle)
+        		#	angle = rigth(angle)
 				print "direita"
 #   		cv2.imshow('img', img)
 
