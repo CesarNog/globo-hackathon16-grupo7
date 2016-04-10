@@ -11,17 +11,21 @@
 html {
   overflow-y: scroll;
 }
+
 a {
   cursor: pointer;
 }
+
 ::selection {
   background: #555;
   color: #FFF;
 }
+
 ::-moz-selection {
   background: #555;
   color: #FFF;
 }
+
 ::-webkit-selection {
   background: #555;
   color: #FFF;
@@ -34,3 +38,59 @@ a {
  ****************************************************************************/
 
 /* Various other styles end */
+
+body {
+  margin: 0;
+  background: #000;
+}
+
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
+}
+
+#smallCameraPlayerScreen {
+  background: rgba(0,0,0,0.3);
+  color: white;
+  padding: 2rem;
+    width: auto;
+    height: auto;
+  margin:1rem;
+  float: right;
+}
+
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-top: 0;
+  letter-spacing: .3rem;
+}
+
+
+a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  background:rgba(0,0,0,0.5);
+  padding: .5rem;
+  transition: .6s background;
+}
+
+@media screen and (max-width: 500px) {
+  div{width:70%;}
+}
+
+@media screen and (max-device-width: 800px) {
+  html { background: url(//demosthenes.info/assets/images/polina.jpg) #000 no-repeat center center fixed; }
+  #bgvid { display: none; }
+}

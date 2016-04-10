@@ -1,3 +1,4 @@
+cv2
 Fabric==1.8.2
 Flask==0.10.1
 Flask-SQLAlchemy==1.0
