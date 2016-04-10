@@ -1,6 +1,6 @@
 ## Seja bem vindo ao Camera Track - Globo Esporte
 
-Ocular é composto por um sistema embarcado conectado a uma câmera e um aplicativo. 
+Ocular é um sistema embarcado conectado a uma câmera e um aplicativo. 
 
 Ocular proporciona uma experiência única para torcedores de times de futebol com base na visualização de dois jogadores escolhidos por eles, antes da partida, em um aplicativo que além de transmitir o jogo, transmite ao vivo o vídeo dos jogadores escolhidos a partir de câmeras especificas. E mais, é possível ver o seu jogador preferido através de uma câmera que o segue a todo o momento durante a partida. O aplicativo ainda traz vários indicadores do jogador, como: número de cartões amarelos e vermelhos, número de faltas recebidas e cometidas, número de gols, chutes a gol e bolas interceptadas, velocidade média do jogador, distância percorrida, gráfico de pontos percorridos no campo, entre outros.
 
@@ -69,28 +69,28 @@ Estrutura do Projeto
 
 ### Inicio Rápido (Localhost)
 
-1. Clone the repo
+1. Clone nosso repositório
   ```
-  $ git clone https://github.com/cesarnog/globo-hackaton16-grupo7.git
-  $ cd flask-boilerplate
+  $ git clone https://github.com/cesarnog/globo-hackathon16-grupo7.git
+  $ cd globo-hackathon16-grupo7
   ```
 
-2. Initialize and activate a virtualenv:
+2. Inicialize e ative a virtualenv:
   ```
   $ virtualenv --no-site-packages env
   $ source env/bin/activate
   ```
 
-3. Install the dependencies:
+3. Instale as dependencias:
   ```
   $ pip install -r requirements.txt
   ```
 
-5. Run the development server:
+5. Rode o servidor de desenvolvimentor:
   ```
   $ python app.py
   ```
 
-6. Navigate to [http://localhost:5000](http://localhost:5000)
+6. Navigue até [http://localhost:5000](http://localhost:5000)
 
 # globo-hackaton16-grupo7
