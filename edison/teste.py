@@ -14,7 +14,6 @@ myServo = Servo("First Servo")
 
 # Attaches the servo to pin 3 in Arduino Expansion board
 myServo.attach(3)
-
 angle = 90
 
 
@@ -48,6 +47,7 @@ int(webcam.get(4))), (0, 255, 0), 2)
 0), 2)
 			cv2.line(img, (cx, cy), (cx, cy), [0, 255, 255], 
 15)
+			print myServo.read()
 			roi_gray = gray[y:y+h, x:x+w]
 			roi_color = img[y:y+h, x:x+w]
 			if (cx, cy) < (int(width/2) 
@@ -58,7 +58,7 @@ int(webcam.get(4))), (0, 255, 0), 2)
 0):
         			angle = rigth(angle)
 				print "direita"
-   		cv2.imshow('img', img)
+#   		cv2.imshow('img', img)
 
 
             
