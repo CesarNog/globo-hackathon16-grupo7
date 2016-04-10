@@ -35,27 +35,21 @@ try:
 		_, img = webcam.read()
 		gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 		faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-		cv2.line(img, (int(width/2), 0), (int(width/2), 
-int(webcam.get(4))), (0, 255, 0), 2)
-		cv2.line(img, (int(width/2) - int(width/4), 0), 
-(int(width/2) - int(width/4), int(webcam.get(4))), (0, 0, 255), 2)
-		cv2.line(img, (int(width/2) + int(width/4), 0), 
-(int(width/2) + int(width/4), int(webcam.get(4))), (0, 0, 255), 2)
+		#cv2.line(img, (int(width/2), 0), (int(width/2), int(webcam.get(4))), (0, 255, 0), 2)
+		#cv2.line(img, (int(width/2) - int(width/4), 0), (int(width/2) - int(width/4), int(webcam.get(4))), (0, 0, 255), 2)
+		#cv2.line(img, (int(width/2) + int(width/4), 0), (int(width/2) + int(width/4), int(webcam.get(4))), (0, 0, 255), 2)
 		for x, y, w, h in faces:
 			cx, cy = x+w/2, y+h/2
-			cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 
-0), 2)
-			cv2.line(img, (cx, cy), (cx, cy), [0, 255, 255], 
-15)
+			#cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)
+			#cv2.line(img, (cx, cy), (cx, cy), [0, 255, 255], 15)
+			
 			print myServo.read()
 			roi_gray = gray[y:y+h, x:x+w]
 			roi_color = img[y:y+h, x:x+w]
-			if (cx, cy) < (int(width/2) 
-- int(width/4), 0):
+			if (cx, cy) < (int(width/2) - int(width/4), 0):
         			angle = left(angle)
         			print "esquerda"
-			elif (cx, cy) > (int(width/2) + int(width/4), 
-0):
+			elif (cx, cy) > (int(width/2) + int(width/4), 0):
         			angle = rigth(angle)
 				print "direita"
 #   		cv2.imshow('img', img)
