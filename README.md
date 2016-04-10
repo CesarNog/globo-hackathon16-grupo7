@@ -65,13 +65,6 @@ Estrutura do Projeto
           └── placeholder.home.html
   ```
 
-### Screenshots
-
-![Pages](https://raw.github.com/cesarn/globo-hackaton16-grupo7/master/screenshots/pages.png)
-
-![Forms](https://raw.github.comcesarn/globo-hackaton16-grupo7/master/screenshots/forms.png)
-
-
 ### Inicio Rápido (Localhost)
 
 1. Clone the repo
