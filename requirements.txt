@@ -2,7 +2,7 @@ cv2
 Fabric==1.8.2
 Flask==0.10.1
 Flask-SQLAlchemy==1.0
-Flask-WTF==0.9.4
+Flask-WTF==0.9.5
 Jinja2==2.7.2
 MarkupSafe==0.18
 SQLAlchemy==0.9.3
