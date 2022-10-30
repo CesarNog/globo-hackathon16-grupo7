@@ -9,9 +9,9 @@ SQLAlchemy==1.2.18
 WTForms==1.0.5
 Werkzeug==0.15.3
 coverage==3.7.1
-ecdsa==0.10
+ecdsa==0.14
 gunicorn==19.3.0
 itsdangerous==0.23
-paramiko==1.12.2
+paramiko==2.10.1
 pycrypto==2.6.1
 wsgiref==0.1.2
